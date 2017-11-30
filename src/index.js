@@ -40,7 +40,7 @@ class ReactTyped extends Component {
         if (stopped) {
             this.typed.stop();
         }
-        if (typeof typedRef === 'function') {
+        if (typedRef) {
             typedRef(this.typed);
         }
     }
