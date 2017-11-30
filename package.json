@@ -1,0 +1,36 @@
+{
+  "name": "react-typed",
+  "version": "1.0.0",
+  "description": "A react wrapper for typed.js",
+  "main": "dist/react-typed.js",
+  "scripts": {
+    "build": "webpack --config webpack.dist.config.js",
+    "start": "webpack-dev-server --color"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "styled-components": "^2.2.4",
+    "typed.js": "^2.0.6"
+  }
+}
