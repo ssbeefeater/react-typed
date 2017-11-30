@@ -28,8 +28,17 @@ const TypedWrapper = styled.span`
 
 class ReactTyped extends Component {
     componentDidMount() {
-        const { style, className, ...typedOptions } = this.props;
+        const {
+            style,
+            ref,
+            className,
+            ...typedOptions
+        } = this.props;
+
         this.typed = new Typed(this.rootElement, typedOptions);
+        if (typeof ref === 'function') {
+            ref(this.typed);
+        }
     }
     componentWillUnmount() {
         this.typed.destroy();
@@ -75,6 +84,7 @@ ReactTyped.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string,
     children: PropTypes.object,
+    ref: PropTypes.object,
 };
 
 export default ReactTyped;
