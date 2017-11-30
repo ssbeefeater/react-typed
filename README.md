@@ -37,7 +37,6 @@ class MyComponent extends Component {
                 <Typed 
                     strings={['Here you can find anything']} 
                     typeSpeed={40} 
-                    backSpeed={50}
                 />
                 <br/>
 
