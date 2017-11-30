@@ -1,6 +1,6 @@
 {
   "name": "react-typed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react wrapper for typed.js",
   "main": "dist/react-typed.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "url": "https://github.com/ssbeefeater/react-typed.git"
   },
   "tags": [
-    "react", "typed.js"
+    "react",
+    "typed.js"
   ],
   "devDependencies": {
     "babel-core": "^6.26.0",
