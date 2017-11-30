@@ -84,7 +84,7 @@ ReactTyped.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string,
     children: PropTypes.object,
-    ref: PropTypes.object,
+    ref: PropTypes.func,
 };
 
 export default ReactTyped;
