@@ -370,13 +370,17 @@ var ReactTyped = function (_Component) {
         value: function componentDidMount() {
             var _props = this.props,
                 style = _props.style,
-                ref = _props.ref,
+                typedRef = _props.typedRef,
+                stopped = _props.stopped,
                 className = _props.className,
-                typedOptions = _objectWithoutProperties(_props, ['style', 'ref', 'className']);
+                typedOptions = _objectWithoutProperties(_props, ['style', 'typedRef', 'stopped', 'className']);
 
             this.typed = new _typed2.default(this.rootElement, typedOptions);
-            if (typeof ref === 'function') {
-                ref(this.typed);
+            if (stopped) {
+                this.typed.stop();
+            }
+            if (typeof typedRef === 'function') {
+                typedRef(this.typed);
             }
         }
     }, {
@@ -437,7 +441,8 @@ ReactTyped.propTypes = {
     style: _propTypes2.default.object,
     className: _propTypes2.default.string,
     children: _propTypes2.default.object,
-    ref: _propTypes2.default.func
+    typedRef: _propTypes2.default.func,
+    stopped: _propTypes2.default.bool
 };
 
 exports.default = ReactTyped;
