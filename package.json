@@ -7,8 +7,15 @@
     "build": "webpack --config webpack.dist.config.js",
     "start": "webpack-dev-server --color"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mike Antoniadis <ssbeefeater@gmail.com> (http://ssbeefeater.github.io/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssbeefeater/react-typed.git"
+  },
+  "tags": [
+    "react", "typed.js"
+  ],
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
