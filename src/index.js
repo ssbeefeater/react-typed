@@ -36,7 +36,7 @@ class ReactTyped extends Component {
         } = this.props;
 
         this.typed = new Typed(this.rootElement, typedOptions);
-        if (typeof ref === 'function') {
+        if (typeof typedRef === 'function') {
             typedRef(this.typed);
         }
     }
