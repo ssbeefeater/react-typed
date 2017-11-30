@@ -31,11 +31,15 @@ class ReactTyped extends Component {
         const {
             style,
             typedRef,
+            stopped,
             className,
             ...typedOptions
         } = this.props;
 
         this.typed = new Typed(this.rootElement, typedOptions);
+        if (stopped) {
+            this.typed.stop();
+        }
         if (typeof typedRef === 'function') {
             typedRef(this.typed);
         }
@@ -85,6 +89,7 @@ ReactTyped.propTypes = {
     className: PropTypes.string,
     children: PropTypes.object,
     typedRef: PropTypes.func,
+    stopped: PropTypes.bool,
 };
 
 export default ReactTyped;
