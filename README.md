@@ -28,7 +28,7 @@ npm install react-typed --save
 ```javascript
 import React,{ Component } from 'react';
 import { render } from 'react-dom';
-import Typed from '../src';
+import Typed from 'react-typed';
 
 class MyComponent extends Component {
     render() {
