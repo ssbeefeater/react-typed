@@ -41,9 +41,15 @@ class MyComponent extends Component {
                 />
                 <br/>
 
-                <Typed strings={['Search for products', 
-                'Search for categoreis', 'Search for brands']}
-                    typeSpeed={40} backSpeed={50} attr="placeholder" loop>
+                <Typed 
+                strings={[
+                    'Search for products',
+                    'Search for categoreis',
+                    'Search for brands']}
+                    typeSpeed={40}
+                    backSpeed={50} 
+                    attr="placeholder"
+                    loop >
                     <input type="text"/>
                 </Typed>
             </div>
