@@ -30,14 +30,14 @@ class ReactTyped extends Component {
     componentDidMount() {
         const {
             style,
-            ref,
+            typedRef,
             className,
             ...typedOptions
         } = this.props;
 
         this.typed = new Typed(this.rootElement, typedOptions);
         if (typeof ref === 'function') {
-            ref(this.typed);
+            typedRef(this.typed);
         }
     }
     componentWillUnmount() {
@@ -84,7 +84,7 @@ ReactTyped.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string,
     children: PropTypes.object,
-    ref: PropTypes.func,
+    typedRef: PropTypes.func,
 };
 
 export default ReactTyped;
