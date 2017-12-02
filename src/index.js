@@ -50,7 +50,7 @@ class ReactTyped extends Component {
     }
     }
 
-    componentWillUpdate(nextProps) {
+    shouldComponentUpdate(nextProps) {
         if (this.props !== nextProps) {
             const { style, className, ...typedOptions } = nextProps;
             this.typed.options = Object.assign(this.typed.options, typedOptions);
