@@ -72,18 +72,17 @@ class ReactTyped extends Component {
         }
         return false;
     }
-    getRef = (element) => {
+    setRef = (element) => {
         this.rootElement = element;
     }
     render() {
         const { style, className, children } = this.props;
-        let child = <span ref={this.getRef} />;
+        let child = <span ref={this.setRef} />;
         if (children) {
             child = React.cloneElement(children, {
-                ref: this.getRef,
+                ref: this.setRef,
             });
         }
-
         return (
             <TypedWrapper
                 style={style}
