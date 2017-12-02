@@ -59,6 +59,15 @@ class ReactTyped extends Component {
                     this.typed[key] = nextProps[key];
                 }
             });
+            if ((!this.props.loop && nextProps.loop) ||
+                (this.props.fadeOut !== nextProps.fadeOut) ||
+                this.props.strings.length !== nextProps.strings.length) {
+                this.typed.destroy();
+                this.typed = new Typed(this.rootElement, typedOptions);
+                if (this.props.typedRef) {
+                    this.props.typedRef(this.typed);
+                }
+            }
             return true;
         }
         return false;
