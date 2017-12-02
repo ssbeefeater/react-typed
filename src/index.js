@@ -45,7 +45,9 @@ class ReactTyped extends Component {
         }
     }
     componentWillUnmount() {
+        if (this.typed) {
         this.typed.destroy();
+    }
     }
 
     componentWillUpdate(nextProps) {
