@@ -36,53 +36,81 @@ class ReactTyped extends Component {
             ...typedOptions
         } = this.props;
 
-        this.typed = new Typed(this.rootElement, typedOptions);
+        this.constructTyped(typedOptions);
+
         if (stopped) {
             this.typed.stop();
         }
-        if (typedRef) {
-            typedRef(this.typed);
-        }
     }
-    componentWillUnmount() {
+
+    constructTyped = (options = {}) => {
+        const {
+            style,
+            typedRef,
+            stopped,
+            className,
+            ...typedOptions
+        } = this.props;
+
         if (this.typed) {
             this.typed.destroy();
         }
+
+        this.typed = new Typed(this.rootElement, Object.assign(typedOptions, options));
+
+        if (this.props.typedRef) {
+            this.props.typedRef(this.typed);
+        }
+
+        this.typed.reConstruct = () => {
+            this.constructTyped();
+        };
     }
 
     shouldComponentUpdate(nextProps) {
         if (this.props !== nextProps) {
-            const { style, className, ...typedOptions } = nextProps;
+            const {
+                style,
+                typedRef,
+                stopped,
+                className,
+                ...typedOptions
+            } = nextProps;
+
             this.typed.options = Object.assign(this.typed.options, typedOptions);
+
             Object.keys(nextProps).forEach((key) => {
                 if (this.typed[key]) {
                     this.typed[key] = nextProps[key];
                 }
             });
+
             if ((!this.props.loop && nextProps.loop) ||
                 (this.props.fadeOut !== nextProps.fadeOut) ||
                 this.props.strings.length !== nextProps.strings.length) {
-                this.typed.destroy();
-                this.typed = new Typed(this.rootElement, typedOptions);
-                if (this.props.typedRef) {
-                    this.props.typedRef(this.typed);
-                }
+                this.typed.reConstruct(nextProps);
             }
+
             return true;
         }
         return false;
     }
+
     setRef = (element) => {
         this.rootElement = element;
     }
+
     render() {
         const { style, className, children } = this.props;
+
         let child = <span ref={this.setRef} />;
+
         if (children) {
             child = React.cloneElement(children, {
                 ref: this.setRef,
             });
         }
+
         return (
             <TypedWrapper
                 style={style}
