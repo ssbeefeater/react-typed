@@ -1,0 +1,2 @@
+--require ignore-styles
+--compilers js:babel-core/register
