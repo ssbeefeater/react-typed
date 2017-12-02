@@ -5,7 +5,7 @@
   "main": "dist/react-typed.js",
   "scripts": {
     "build": "webpack --config webpack.dist.config.js",
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006"
   },
   "author": "Mike Antoniadis <ssbeefeater@gmail.com> (http://ssbeefeater.github.io/)",
   "license": "MIT",
