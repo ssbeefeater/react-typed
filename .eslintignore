@@ -1,2 +1,2 @@
 stories/**/*.js
-tests/**/*.js
+__tests__/**/*.js
