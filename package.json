@@ -4,6 +4,8 @@
   "description": "A react wrapper for typed.js",
   "main": "dist/react-typed.js",
   "scripts": {
+    "postinstall": "echo \"Install starting\"",
+    "postuninstall": "echo \"Uninstall finished\"",
     "build": "webpack --config webpack.dist.config.js",
     "start": "start-storybook -p 6006",
     "test": "jest --coverage"
