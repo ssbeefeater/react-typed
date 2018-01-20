@@ -43,7 +43,7 @@ class ReactTyped extends Component {
         }
     }
 
-    constructTyped = (options = {}) => {
+    constructTyped(options = {}) {
         const {
             style,
             typedRef,
@@ -62,8 +62,8 @@ class ReactTyped extends Component {
             this.props.typedRef(this.typed);
         }
 
-        this.typed.reConstruct = () => {
-            this.constructTyped();
+        this.typed.reConstruct = (opts) => {
+            this.constructTyped(opts);
         };
     }
 
@@ -78,19 +78,19 @@ class ReactTyped extends Component {
             } = nextProps;
 
             this.typed.options = Object.assign(this.typed.options, typedOptions);
-
-            Object.keys(nextProps).forEach((key) => {
+            const reConstructed = !Object.keys(nextProps).every((key) => {
+                if (!this.props[key] && nextProps[key]) {
+                    this.constructTyped(nextProps);
+                    return false;
+                }
                 if (this.typed[key]) {
                     this.typed[key] = nextProps[key];
                 }
+                return true;
             });
-
-            if ((!this.props.loop && nextProps.loop) ||
-                (this.props.fadeOut !== nextProps.fadeOut) ||
-                this.props.strings.length !== nextProps.strings.length) {
-                this.typed.reConstruct(nextProps);
+            if (!reConstructed && this.props.strings.length !== nextProps.strings.length) {
+                this.constructTyped(nextProps);
             }
-
             return true;
         }
         return false;
@@ -98,12 +98,12 @@ class ReactTyped extends Component {
 
     setRef = (element) => {
         this.rootElement = element;
-    }
+    };
 
     render() {
         const { style, className, children } = this.props;
 
-        let child = <span ref={this.setRef} />;
+        let child = <span ref={this.setRef}/>;
 
         if (children) {
             child = React.cloneElement(children, {
