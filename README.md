@@ -7,9 +7,9 @@
 
 [Installation](#installation)
 
-[Examples](#examples)
+[Examples](http://ssbeefeater.github.io/react-typed)
 
-[Docs](http://www.mattboldt.com/typed.js/docs/)
+[Documentation](#Documentation)
 
 ---
 
@@ -23,7 +23,7 @@ yarn add react-typed
 npm install react-typed --save
 ```
 ---
-#### EXAMPLES
+#### Examples
 
 ```javascript
 import React,{ Component } from 'react';
@@ -62,3 +62,51 @@ render(
 );
 
 ```
+
+###### Using typed start, stop, toggle, destroy, reset functions
+```javascript
+import React,{ Component } from 'react';
+import { render } from 'react-dom';
+import Typed from 'react-typed';
+
+class MyComponent extends Component {
+    render() {
+        return (
+                <div>
+                    <Button onClick={this.typed.start()}>Start</Button>
+                    <Button onClick={this.typed.stop()}>Stop</Button>
+                    <Button onClick={this.typed.toggle()}>Toggle</Button>
+                    <Button onClick={this.typed.destroy()}>Destroy</Button>
+                    <Button onClick={this.typed.reset()}>Reset</Button>
+                    <Typed 
+                    typedRef={(typed) => { this.typed = typed; }}
+                    strings={['Here you can find anything']} 
+                    typeSpeed={40} 
+                    />
+                </div>
+        );
+    }
+}
+
+render(
+    <MyComponent/>,
+    document.getElementById('app'),
+);
+
+```
+
+
+#### Documentation
+
+
+React-typed support all official options that you can find [here](http://www.mattboldt.com/typed.js/docs/).
+But also support some extra prop:
+
+
+| propType  | required | default  | description |
+| ------------- | ------------- | ------------- | ------------- |
+| style(object) | no | - | styles for the outer element |
+| className(string) | no | - | class name for the outer element |
+| children(object) | no | - | the element to wrap |
+| typedRef(func) | no | - | typedRef(self: Typed) returns the Typed instance |
+| stopped(bool) | no | - | initialize in stopped state |
