@@ -35,7 +35,7 @@ const defaults = {
   startDelay: 0,
   smartBackspace: true,
   shuffle: false,
-  backDelay: 0,
+  backDelay: 1,
   fadeOut: false,
   fadeOutDelay: 100,
   loopCount: 0,
