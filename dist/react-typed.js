@@ -7,7 +7,7 @@
 		exports["react-typed"] = factory(require("react"));
 	else
 		root["react-typed"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -75,46 +75,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (true) {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(7)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = require('./factoryWithThrowingShims')();
-}
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -156,7 +116,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -183,7 +143,7 @@ module.exports = emptyFunction;
 
 var validateFormat = function validateFormat(format) {};
 
-if (true) {
+if (undefined !== 'production') {
   validateFormat = function validateFormat(format) {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -215,7 +175,66 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (undefined !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(7)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(10)();
+}
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,7 +248,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(0);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -240,7 +259,7 @@ var emptyFunction = __webpack_require__(2);
 
 var warning = emptyFunction;
 
-if (true) {
+if (undefined !== 'production') {
   var printWarning = function printWarning(format) {
     for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -283,25 +302,6 @@ if (true) {
 module.exports = warning;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-module.exports = ReactPropTypesSecret;
-
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -316,19 +316,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n    .typed-cursor{\n        opacity: 1;\n        animation: typedjsBlink 0.7s infinite;\n        -webkit-animation: typedjsBlink 0.7s infinite;\n        animation: typedjsBlink 0.7s infinite;\n    }\n    @keyframes typedjsBlink{\n        50% { opacity: 0.0; }\n    }\n    @-webkit-keyframes typedjsBlink{\n        0% { opacity: 1; }\n        50% { opacity: 0.0;}\n        100% { opacity: 1; }\n    }\n    .typed-fade-out{\n        opacity: 0;\n        transition: opacity .25s;\n        -webkit-animation: 0;\n        animation: 0;\n    }\n'], ['\n    .typed-cursor{\n        opacity: 1;\n        animation: typedjsBlink 0.7s infinite;\n        -webkit-animation: typedjsBlink 0.7s infinite;\n        animation: typedjsBlink 0.7s infinite;\n    }\n    @keyframes typedjsBlink{\n        50% { opacity: 0.0; }\n    }\n    @-webkit-keyframes typedjsBlink{\n        0% { opacity: 1; }\n        50% { opacity: 0.0;}\n        100% { opacity: 1; }\n    }\n    .typed-fade-out{\n        opacity: 0;\n        transition: opacity .25s;\n        -webkit-animation: 0;\n        animation: 0;\n    }\n']);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _typed = __webpack_require__(10);
+var _typed = __webpack_require__(11);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _styledComponents = __webpack_require__(11);
+var _styledComponents = __webpack_require__(12);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
@@ -360,7 +360,7 @@ var ReactTyped = function (_Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactTyped.__proto__ || Object.getPrototypeOf(ReactTyped)).call.apply(_ref, [this].concat(args))), _this), _this.getRef = function (element) {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactTyped.__proto__ || Object.getPrototypeOf(ReactTyped)).call.apply(_ref, [this].concat(args))), _this), _this.setRef = function (element) {
             _this.rootElement = element;
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -375,35 +375,66 @@ var ReactTyped = function (_Component) {
                 className = _props.className,
                 typedOptions = _objectWithoutProperties(_props, ['style', 'typedRef', 'stopped', 'className']);
 
-            this.typed = new _typed2.default(this.rootElement, typedOptions);
+            this.constructTyped(typedOptions);
+
             if (stopped) {
                 this.typed.stop();
             }
-            if (typeof typedRef === 'function') {
-                typedRef(this.typed);
-            }
         }
     }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.typed.destroy();
-        }
-    }, {
-        key: 'componentWillUpdate',
-        value: function componentWillUpdate(nextProps) {
+        key: 'constructTyped',
+        value: function constructTyped() {
             var _this2 = this;
+
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var _props2 = this.props,
+                style = _props2.style,
+                typedRef = _props2.typedRef,
+                stopped = _props2.stopped,
+                className = _props2.className,
+                typedOptions = _objectWithoutProperties(_props2, ['style', 'typedRef', 'stopped', 'className']);
+
+            if (this.typed) {
+                this.typed.destroy();
+            }
+
+            this.typed = new _typed2.default(this.rootElement, Object.assign(typedOptions, options));
+
+            if (this.props.typedRef) {
+                this.props.typedRef(this.typed);
+            }
+
+            this.typed.reConstruct = function (opts) {
+                _this2.constructTyped(opts);
+            };
+        }
+    }, {
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps) {
+            var _this3 = this;
 
             if (this.props !== nextProps) {
                 var style = nextProps.style,
+                    typedRef = nextProps.typedRef,
+                    stopped = nextProps.stopped,
                     className = nextProps.className,
-                    typedOptions = _objectWithoutProperties(nextProps, ['style', 'className']);
+                    typedOptions = _objectWithoutProperties(nextProps, ['style', 'typedRef', 'stopped', 'className']);
 
                 this.typed.options = Object.assign(this.typed.options, typedOptions);
-                Object.keys(nextProps).forEach(function (key) {
-                    if (_this2.typed[key]) {
-                        _this2.typed[key] = nextProps[key];
+                var reConstructed = !Object.keys(nextProps).every(function (key) {
+                    if (!_this3.props[key] && nextProps[key]) {
+                        _this3.constructTyped(nextProps);
+                        return false;
                     }
+                    if (_this3.typed[key]) {
+                        _this3.typed[key] = nextProps[key];
+                    }
+                    return true;
                 });
+                if (!reConstructed && this.props.strings.length !== nextProps.strings.length) {
+                    this.constructTyped(nextProps);
+                }
                 return true;
             }
             return false;
@@ -411,15 +442,17 @@ var ReactTyped = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props2 = this.props,
-                style = _props2.style,
-                className = _props2.className,
-                children = _props2.children;
+            var _props3 = this.props,
+                style = _props3.style,
+                className = _props3.className,
+                children = _props3.children;
 
-            var child = _react2.default.createElement('span', { ref: this.getRef });
+
+            var child = _react2.default.createElement('span', { ref: this.setRef });
+
             if (children) {
                 child = _react2.default.cloneElement(children, {
-                    ref: this.getRef
+                    ref: this.setRef
                 });
             }
 
@@ -438,11 +471,72 @@ var ReactTyped = function (_Component) {
 }(_react.Component);
 
 ReactTyped.propTypes = {
+    /** styles for the outer element */
     style: _propTypes2.default.object,
+    /** class name for the outer element */
     className: _propTypes2.default.string,
+    /** the element to wrapp */
     children: _propTypes2.default.object,
+    /** typedRef(self: Typed) returns the Typed instance */
     typedRef: _propTypes2.default.func,
-    stopped: _propTypes2.default.bool
+    /** initialize in stopped state */
+    stopped: _propTypes2.default.bool,
+    /** strings to be typed */
+    strings: _propTypes2.default.arrayOf(_propTypes2.default.string),
+    /**  type speed in milliseconds */
+    typeSpeed: _propTypes2.default.number,
+    /** time before typing starts in milliseconds */
+    startDelay: _propTypes2.default.number,
+    /** backspacing speed in milliseconds */
+    backSpeed: _propTypes2.default.number,
+    /**  only backspace what doesn't match the previous string */
+    smartBackspace: _propTypes2.default.bool,
+    /** shuffle the strings */
+    shuffle: _propTypes2.default.bool,
+    /** time before backspacing in milliseconds */
+    backDelay: _propTypes2.default.number,
+    /** Fade out instead of backspace */
+    fadeOut: _propTypes2.default.bool,
+    /** css class for fade animation */
+    fadeOutClass: _propTypes2.default.string,
+    /** Fade out delay in milliseconds */
+    fadeOutDelay: _propTypes2.default.number,
+    /** loop the strings */
+    loop: _propTypes2.default.bool,
+    /** amount of loops */
+    loopCount: _propTypes2.default.number,
+    /** show cursor */
+    showCursor: _propTypes2.default.bool,
+    /** character for cursor */
+    cursorChar: _propTypes2.default.string,
+    /** insert CSS for cursor and fadeOut into HTML */
+    autoInsertCss: _propTypes2.default.bool,
+    /** attribute for typing Ex: input placeholder, value, or just HTML text */
+    attr: _propTypes2.default.string,
+    /**  bind to focus and blur if el is text input */
+    bindInputFocusEvents: _propTypes2.default.bool,
+    /**  'html' or 'null' for plaintext */
+    contentType: _propTypes2.default.oneOf(['html', '']),
+    /** onComplete(self: Typed) All typing is complete */
+    onComplete: _propTypes2.default.func,
+    /** preStringTyped(arrayPos: number, self: Typed) Before each string is typed */
+    preStringTyped: _propTypes2.default.func,
+    /** onStringTyped(arrayPos: number, self: Typed) After each string is typed */
+    onStringTyped: _propTypes2.default.func,
+    /** onLastStringBackspaced(self: Typed) During looping, after last string is typed */
+    onLastStringBackspaced: _propTypes2.default.func,
+    /** onTypingPaused(arrayPos: number, self: Typed) Typing has been stopped */
+    onTypingPaused: _propTypes2.default.func,
+    /** onTypingResumed(arrayPos: number, self: Typed) Typing has been started after being stopped */
+    onTypingResumed: _propTypes2.default.func,
+    /** onReset(self: Typed) After reset */
+    onReset: _propTypes2.default.func,
+    /** onStop(arrayPos: number, self: Typed)    After stop */
+    onStop: _propTypes2.default.func,
+    /** onStart(arrayPos: number, self: Typed) After start */
+    onStart: _propTypes2.default.func,
+    /** onDestroy(self: Typed) After destroy */
+    onDestroy: _propTypes2.default.func
 };
 
 exports.default = ReactTyped;
@@ -461,12 +555,12 @@ exports.default = ReactTyped;
 
 
 
-var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(3);
-var warning = __webpack_require__(4);
+var emptyFunction = __webpack_require__(0);
+var invariant = __webpack_require__(1);
+var warning = __webpack_require__(5);
 var assign = __webpack_require__(8);
 
-var ReactPropTypesSecret = __webpack_require__(5);
+var ReactPropTypesSecret = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(9);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
@@ -600,7 +694,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    if (true) {
+    if (undefined !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -617,7 +711,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
             'Use `PropTypes.checkPropTypes()` to call them. ' +
             'Read more at http://fb.me/use-check-prop-types'
           );
-        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+        } else if (undefined !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -727,7 +821,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-       true ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      undefined !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
       return emptyFunction.thatReturnsNull;
     }
 
@@ -770,7 +864,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-       true ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      undefined !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunction.thatReturnsNull;
     }
 
@@ -1107,10 +1201,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 
-if (true) {
-  var invariant = __webpack_require__(3);
-  var warning = __webpack_require__(4);
-  var ReactPropTypesSecret = __webpack_require__(5);
+if (undefined !== 'production') {
+  var invariant = __webpack_require__(1);
+  var warning = __webpack_require__(5);
+  var ReactPropTypesSecret = __webpack_require__(2);
   var loggedTypeFailures = {};
 }
 
@@ -1126,7 +1220,7 @@ if (true) {
  * @private
  */
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (true) {
+  if (undefined !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (typeSpecs.hasOwnProperty(typeSpecName)) {
         var error;
@@ -1161,6 +1255,71 @@ module.exports = checkPropTypes;
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var emptyFunction = __webpack_require__(0);
+var invariant = __webpack_require__(1);
+var ReactPropTypesSecret = __webpack_require__(2);
+
+module.exports = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    invariant(
+      false,
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim
+  };
+
+  ReactPropTypes.checkPropTypes = emptyFunction;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -2201,7 +2360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2213,17 +2372,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withTheme", function() { return wrapWithTheme; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServerStyleSheet", function() { return ServerStyleSheet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StyleSheetManager", function() { return StyleSheetManager; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_is_plain_object__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_is_plain_object__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_is_plain_object___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_is_plain_object__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stylis__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stylis__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stylis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_stylis__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_is_function__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_is_function__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_is_function___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_is_function__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_hoist_non_react_statics__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_hoist_non_react_statics__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_hoist_non_react_statics__);
 
 
@@ -4007,7 +4166,7 @@ var _StyledComponent = (function (ComponentStyle, constructWithOptions) {
     var styledComponentId = options.displayName && options.componentId ? options.displayName + '-' + options.componentId : componentId;
 
     var warnTooManyClasses = void 0;
-    if (true) {
+    if (undefined !== 'production') {
       warnTooManyClasses = createWarnTooManyClasses(displayName);
     }
 
@@ -4166,7 +4325,7 @@ var isStaticRules = function isStaticRules(rules, attrs) {
   return true;
 };
 
-var isHRMEnabled = typeof module !== 'undefined' && module.hot && "development" !== 'production';
+var isHRMEnabled = typeof module !== 'undefined' && module.hot && undefined !== 'production';
 
 /*
  ComponentStyle is all the CSS-specific stuff, not
@@ -4181,7 +4340,7 @@ var _ComponentStyle = (function (nameGenerator, flatten, stringifyRules) {
       this.isStatic = !isHRMEnabled && isStaticRules(rules, attrs);
       this.componentId = componentId;
       if (!StyleSheet.instance.hasInjectedComponent(this.componentId)) {
-        var placeholder =  true ? '.' + componentId + ' {}' : '';
+        var placeholder = undefined !== 'production' ? '.' + componentId + ' {}' : '';
         StyleSheet.instance.deferredInject(componentId, true, placeholder);
       }
     }
@@ -4377,7 +4536,7 @@ var wrapWithTheme = function wrapWithTheme(Component$$1) {
 
       var styledContext = this.context[CHANNEL_NEXT];
       var themeProp = determineTheme(this.props, undefined, defaultProps);
-      if (styledContext === undefined && themeProp === undefined && "development" !== 'production') {
+      if (styledContext === undefined && themeProp === undefined && undefined !== 'production') {
         // eslint-disable-next-line no-console
         console.warn('[withTheme] You are not using a ThemeProvider nor passing a theme prop or a theme in defaultProps');
       } else if (styledContext === undefined && themeProp !== undefined) {
@@ -4451,10 +4610,10 @@ var styled = _styled(StyledComponent, constructWithOptions);
 
 /* harmony default export */ __webpack_exports__["default"] = (styled);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(13)(module)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = function(originalModule) {
@@ -4484,7 +4643,7 @@ module.exports = function(originalModule) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4497,7 +4656,7 @@ module.exports = function(originalModule) {
 
 
 
-var isObject = __webpack_require__(14);
+var isObject = __webpack_require__(15);
 
 function isObjectObject(o) {
   return isObject(o) === true
@@ -4528,7 +4687,7 @@ module.exports = function isPlainObject(o) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4547,7 +4706,7 @@ module.exports = function isObject(val) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -6161,7 +6320,7 @@ module.exports = function isObject(val) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = isFunction
@@ -6182,7 +6341,7 @@ function isFunction (fn) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
