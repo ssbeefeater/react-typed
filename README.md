@@ -99,8 +99,8 @@ render(
 #### Documentation
 
 
-React-typed support all official options that you can find [here](http://www.mattboldt.com/typed.js/docs/).
-But also support some extra prop:
+React-typed supports all official options that you can find [here](http://www.mattboldt.com/typed.js/docs/).
+But also supports some extra props:
 
 
 | propType  | required | default  | description |
