@@ -9,7 +9,7 @@
 
 [Examples](http://ssbeefeater.github.io/react-typed)
 
-[Documentation](#Documentation)
+[Documentation](#documentation)
 
 ---
 
