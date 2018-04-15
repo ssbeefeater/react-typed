@@ -43,7 +43,7 @@ class MyComponent extends Component {
                 <Typed 
                 strings={[
                     'Search for products',
-                    'Search for categoreis',
+                    'Search for categories',
                     'Search for brands']}
                     typeSpeed={40}
                     backSpeed={50} 
