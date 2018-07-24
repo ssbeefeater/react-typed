@@ -1,10 +1,10 @@
 {
   "name": "react-typed",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A react wrapper for typed.js",
   "main": "dist/react-typed.js",
   "scripts": {
-    "prepublish":"npm run build && npm version patch",
+    "prepublish": "npm run build && npm version patch",
     "build": "webpack",
     "start": "start-storybook -p 6006",
     "test": "jest --coverage"
