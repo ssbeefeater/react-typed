@@ -23,6 +23,14 @@ module.exports = {
     "rules": {  //rule overrides go here http://eslint.org/docs/user-guide/configuring#configuring-rules
         'indent': [2, 4, { 'SwitchCase': 1, 'VariableDeclarator': 1 }],
         "class-methods-use-this": 0,
-        "react/display-name": 0
+        "react/display-name": 0,
+        "max-len": 150,
+        'max-len': ['error', 120, 2, {
+            ignoreUrls: true,
+            ignoreComments: true,
+            ignoreRegExpLiterals: true,
+            ignoreStrings: true,
+            ignoreTemplateLiterals: true,
+        }]
     }
 };
