@@ -140,20 +140,13 @@ var TypedWrapper = _styledComponents2.default.span(_templateObject);
 var ReactTyped = function (_Component) {
     _inherits(ReactTyped, _Component);
 
-    function ReactTyped() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
+    function ReactTyped(props) {
         _classCallCheck(this, ReactTyped);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+        var _this = _possibleConstructorReturn(this, (ReactTyped.__proto__ || Object.getPrototypeOf(ReactTyped)).call(this, props));
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactTyped.__proto__ || Object.getPrototypeOf(ReactTyped)).call.apply(_ref, [this].concat(args))), _this), _this.setRef = function (element) {
-            _this.rootElement = element;
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        _this.rootElement = _react2.default.createRef();
+        return _this;
     }
 
     _createClass(ReactTyped, [{
@@ -190,7 +183,7 @@ var ReactTyped = function (_Component) {
                 this.typed.destroy();
             }
 
-            this.typed = new _typed2.default(this.rootElement, Object.assign(typedOptions, options));
+            this.typed = new _typed2.default(this.rootElement.current, Object.assign(typedOptions, options));
 
             if (this.props.typedRef) {
                 this.props.typedRef(this.typed);
@@ -239,11 +232,11 @@ var ReactTyped = function (_Component) {
                 children = _props3.children;
 
 
-            var child = _react2.default.createElement('span', { ref: this.setRef });
+            var child = _react2.default.createElement('span', { ref: this.rootElement });
 
             if (children) {
                 child = _react2.default.cloneElement(children, {
-                    ref: this.setRef
+                    ref: this.rootElement
                 });
             }
 

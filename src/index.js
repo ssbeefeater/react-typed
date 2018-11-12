@@ -27,6 +27,12 @@ const TypedWrapper = styled.span`
 `;
 
 class ReactTyped extends Component {
+    constructor(props) {
+        super(props);
+
+        this.rootElement = React.createRef();
+    }
+
     componentDidMount() {
         const {
             style,
@@ -35,6 +41,7 @@ class ReactTyped extends Component {
             className,
             ...typedOptions
         } = this.props;
+
 
         this.constructTyped(typedOptions);
 
@@ -56,7 +63,7 @@ class ReactTyped extends Component {
             this.typed.destroy();
         }
 
-        this.typed = new Typed(this.rootElement, Object.assign(typedOptions, options));
+        this.typed = new Typed(this.rootElement.current, Object.assign(typedOptions, options));
 
         if (this.props.typedRef) {
             this.props.typedRef(this.typed);
@@ -96,18 +103,14 @@ class ReactTyped extends Component {
         return false;
     }
 
-    setRef = (element) => {
-        this.rootElement = element;
-    };
-
     render() {
         const { style, className, children } = this.props;
 
-        let child = <span ref={this.setRef}/>;
+        let child = <span ref={this.rootElement}/>;
 
         if (children) {
             child = React.cloneElement(children, {
-                ref: this.setRef,
+                ref: this.rootElement,
             });
         }
 
