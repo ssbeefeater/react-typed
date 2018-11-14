@@ -27,11 +27,7 @@ const TypedWrapper = styled.span`
 `;
 
 class ReactTyped extends Component {
-    constructor(props) {
-        super(props);
-
-        this.rootElement = React.createRef();
-    }
+    rootElement = React.createRef()
 
     componentDidMount() {
         const {
