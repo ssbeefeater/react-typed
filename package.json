@@ -51,8 +51,10 @@
     "raf": "^3.4.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.5"
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14"
   },
   "peerDependencies": {
     "react": "^16.3.0",

@@ -1,12 +1,24 @@
 const webpack = require('webpack');
 const path = require('path');
-
-const { UglifyJsPlugin } = webpack.optimize;
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: {
         'react-typed': './src/index.js',
         'react-typed.min': './src/index.js',
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJSPlugin({
+                sourceMap: true,
+                uglifyOptions: {
+                    compress: {
+                        inline: false,
+                    },
+                },
+            }),
+        ],
+        runtimeChunk: false,
     },
     externals: {
         react: {
@@ -40,13 +52,6 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        }),
-        new UglifyJsPlugin({
-            include: /\.min\.js$/,
-            minimize: true,
-            compress: {
-                warnings: false,
-            },
         }),
     ],
 
