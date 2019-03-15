@@ -1,10 +1,10 @@
 {
   "name": "react-typed",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A react wrapper for typed.js",
   "main": "dist/react-typed.js",
+  "types": "./react-typed.d.ts",
   "scripts": {
-    "prepublish": "npm run build && npm version patch",
     "build": "webpack",
     "start": "start-storybook -p 6006",
     "test": "jest --coverage"
@@ -32,6 +32,8 @@
     "@storybook/addon-knobs": "^3.2.16",
     "@storybook/addon-links": "^3.2.16",
     "@storybook/react": "^3.2.16",
+    "@types/react": "^16.8.8",
+    "@types/typed.js": "^2.0.9",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
