@@ -1,6 +1,6 @@
 {
   "name": "react-typed",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A react wrapper for typed.js",
   "main": "dist/react-typed.js",
   "types": "./react-typed.d.ts",
