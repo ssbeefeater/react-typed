@@ -46,7 +46,7 @@
     "raf": "^3.4.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "webpack": "^4.28.3",
+    "webpack": "^4.29.6",
     "webpack-cli": "^3.2.0",
     "webpack-dev-server": "^3.1.14"
   },

@@ -33,6 +33,7 @@ module.exports = {
         publicPath: '/',
         libraryTarget: 'umd',
         library: 'react-typed',
+        globalObject: 'this',
     },
 
     plugins: [
