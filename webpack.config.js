@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -40,6 +40,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
+        new CopyPlugin([
+            './src/animatedCursor.css',
+        ]),
     ],
 
     module: {
@@ -51,6 +54,11 @@ module.exports = {
                     loader: 'babel-loader',
                 },
             },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+
         ],
     },
 };

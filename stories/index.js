@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number, object, array, select, button } from '@storybook/addon-knobs';
-import { linkTo } from '@storybook/addon-links';
+import { withKnobs, text, boolean, number, array, button } from '@storybook/addon-knobs';
 import '@storybook/addon-knobs/register';
 import Typed from '../src';
 

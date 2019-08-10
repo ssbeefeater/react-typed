@@ -34,19 +34,19 @@ class MyComponent extends Component {
     render() {
         return (
             <div>
-                <Typed 
-                    strings={['Here you can find anything']} 
-                    typeSpeed={40} 
+                <Typed
+                    strings={['Here you can find anything']}
+                    typeSpeed={40}
                 />
                 <br/>
 
-                <Typed 
+                <Typed
                 strings={[
                     'Search for products',
                     'Search for categories',
                     'Search for brands']}
                     typeSpeed={40}
-                    backSpeed={50} 
+                    backSpeed={50}
                     attr="placeholder"
                     loop >
                     <input type="text"/>
@@ -78,10 +78,10 @@ class MyComponent extends Component {
                     <Button onClick={this.typed.toggle()}>Toggle</Button>
                     <Button onClick={this.typed.destroy()}>Destroy</Button>
                     <Button onClick={this.typed.reset()}>Reset</Button>
-                    <Typed 
+                    <Typed
                     typedRef={(typed) => { this.typed = typed; }}
-                    strings={['Here you can find anything']} 
-                    typeSpeed={40} 
+                    strings={['Here you can find anything']}
+                    typeSpeed={40}
                     />
                 </div>
         );
@@ -95,6 +95,7 @@ render(
 
 ```
 
+for blinking cursor ```import 'react-typed/dist/animatedCursor.css';```
 
 #### Documentation
 

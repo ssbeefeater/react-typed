@@ -1,30 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Typed from 'typed.js';
-import styled from 'styled-components';
-
-const TypedWrapper = styled.span`
-    .typed-cursor{
-        opacity: 1;
-        animation: typedjsBlink 0.7s infinite;
-        -webkit-animation: typedjsBlink 0.7s infinite;
-        animation: typedjsBlink 0.7s infinite;
-    }
-    @keyframes typedjsBlink{
-        50% { opacity: 0.0; }
-    }
-    @-webkit-keyframes typedjsBlink{
-        0% { opacity: 1; }
-        50% { opacity: 0.0;}
-        100% { opacity: 1; }
-    }
-    .typed-fade-out{
-        opacity: 0;
-        transition: opacity .25s;
-        -webkit-animation: 0;
-        animation: 0;
-    }
-`;
 
 class ReactTyped extends Component {
     rootElement = React.createRef()
@@ -102,7 +78,7 @@ class ReactTyped extends Component {
     render() {
         const { style, className, children } = this.props;
 
-        let child = <span ref={this.rootElement}/>;
+        let child = <span ref={this.rootElement} />;
 
         if (children) {
             child = React.cloneElement(children, {
@@ -111,12 +87,12 @@ class ReactTyped extends Component {
         }
 
         return (
-            <TypedWrapper
+            <span
                 style={style}
                 className={className}
             >
                 {child}
-            </TypedWrapper>
+            </span>
         );
     }
 }
