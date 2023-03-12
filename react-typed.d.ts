@@ -63,6 +63,7 @@ declare module 'react-typed' {
         onDestroy?: Function,
         className?: string,
         style?: React.CSSProperties,
+        children: Element
     }
     class ReactTyped extends React.Component<ReactTypedProps, any> { }
     export default ReactTyped
