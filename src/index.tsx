@@ -169,6 +169,11 @@ export interface ReactTypedProps {
    * @default (ref)=>ref.current
    * */
   parseRef?: (ref: React.RefObject<any>) => HTMLElement;
+  /**
+   * if true will start only when the element is visible
+   * @default false
+   * */
+  startWhenVisible?: boolean;
   children?: React.ReactElement;
 }
 
@@ -180,6 +185,7 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
     parseRef: transformRef,
     stopped,
     children,
+    startWhenVisible,
     ...typedOptions
   }) => {
     const rootElement = useRef<any>(null);
@@ -189,7 +195,7 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
           (v) =>
             typeof v === "boolean" ||
             typeof v === "number" ||
-            typeof v === "number"
+            typeof v === "string"
         ),
         typedOptions.strings?.join(","),
       ],
@@ -199,11 +205,23 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
       const element =
         (transformRef && transformRef(rootElement)) || rootElement.current;
       const typed = new Typed(element, { ...typedOptions });
+
+      if (stopped || startWhenVisible) {
+        typed?.stop();
+      }
+
+      if (startWhenVisible) {
+        const observer = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            typed?.start();
+            observer.disconnect();
+          }
+        });
+        observer.observe(element);
+      }
+
       if (typedRef && typed) {
         typedRef(typed);
-      }
-      if (stopped) {
-        typed?.stop();
       }
       return () => {
         typed.destroy();

@@ -169,6 +169,11 @@ export interface ReactTypedProps {
      * @default (ref)=>ref.current
      * */
     parseRef?: (ref: React.RefObject<any>) => HTMLElement;
+    /**
+     * if true will start only when the element is visible
+     * @default false
+     * */
+    startWhenVisible?: boolean;
     children?: React.ReactElement;
 }
 export declare const ReactTyped: React.FC<ReactTypedProps>;

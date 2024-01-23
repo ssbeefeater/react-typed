@@ -12,25 +12,34 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React, { memo, useMemo, useRef, useEffect } from "react";
 import Typed from "typed.js";
 export const ReactTyped = memo((_a) => {
-    var { style, className, typedRef, parseRef: transformRef, stopped, children } = _a, typedOptions = __rest(_a, ["style", "className", "typedRef", "parseRef", "stopped", "children"]);
+    var { style, className, typedRef, parseRef: transformRef, stopped, children, startWhenVisible } = _a, typedOptions = __rest(_a, ["style", "className", "typedRef", "parseRef", "stopped", "children", "startWhenVisible"]);
     const rootElement = useRef(null);
     const shouldUpdateArgs = useMemo(() => {
         var _a;
         return [
             ...Object.values(typedOptions).filter((v) => typeof v === "boolean" ||
                 typeof v === "number" ||
-                typeof v === "number"),
+                typeof v === "string"),
             (_a = typedOptions.strings) === null || _a === void 0 ? void 0 : _a.join(","),
         ];
     }, [typedOptions]);
     useEffect(() => {
         const element = (transformRef && transformRef(rootElement)) || rootElement.current;
         const typed = new Typed(element, Object.assign({}, typedOptions));
+        if (stopped || startWhenVisible) {
+            typed === null || typed === void 0 ? void 0 : typed.stop();
+        }
+        if (startWhenVisible) {
+            const observer = new IntersectionObserver(([entry]) => {
+                if (entry.isIntersecting) {
+                    typed === null || typed === void 0 ? void 0 : typed.start();
+                    observer.disconnect();
+                }
+            });
+            observer.observe(element);
+        }
         if (typedRef && typed) {
             typedRef(typed);
-        }
-        if (stopped) {
-            typed === null || typed === void 0 ? void 0 : typed.stop();
         }
         return () => {
             typed.destroy();

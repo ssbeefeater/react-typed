@@ -8,6 +8,7 @@
 - Support for react 18
 - new property parseRef for supporting custom components that handles ref differently (see last example)
 - update docs with latest storybook version
+
 ---
 
 [Installation](#installation)
@@ -52,6 +53,22 @@ const MyComponent = () => (
       <input type="text" />
     </ReactTyped>
   </div>
+);
+```
+
+###### Start only if is visible in the dom
+
+```javascript
+import { ReactTyped } from "react-typed";
+
+const MyComponent = () => (
+  <ReactTyped
+    startWhenVisible
+    strings={[
+      "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
+    ]}
+    typeSpeed={40}
+  />
 );
 ```
 

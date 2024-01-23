@@ -31,7 +31,7 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   args: {
     strings: [
-      "welcome to react-typed",
+      'welcome to <a href="https://github.com/mattboldt/typed.js/">react-typed</a>',
       'This is a react component that wraps up the <a href="https://github.com/mattboldt/typed.js/">typed.js</a>',
       'If you like the project add a star in <a href="https://github.com/mattboldt/typed.js/">typed.js</a> and <a href="https://github.com/mattboldt/typed.js/">react-typed</a>',
     ],
@@ -124,5 +124,23 @@ export const CustomComponent: Story = {
     >
       <Input type="text" style={{ width: 300 }} />
     </ReactTyped>
+  ),
+};
+
+export const StartWhenVisible: Story = {
+  render: (props) => (
+    <>
+      Scroll Down
+      <div style={{ height: 1000 }} />
+      <TypedReact
+        {...props}
+        startWhenVisible
+        loop={false}
+        strings={[
+          "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
+        ]}
+      />
+      <div style={{ height: 300 }} />
+    </>
   ),
 };
