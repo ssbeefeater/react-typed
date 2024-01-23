@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useMemo, useRef, useEffect } from "react";
 import Typed from "typed.js";
 export interface ReactTypedProps {
   /**
@@ -162,15 +162,43 @@ export interface ReactTypedProps {
    * @default false
    * */
   stopped?: boolean;
+  /**
+   * In some custom component dom element is not in the ref.current property.
+   * ie an Input by antd the element is in input property ( ref.current.input )
+   * you can use this function to get the element from the ref
+   * @default (ref)=>ref.current
+   * */
+  parseRef?: (ref: React.RefObject<any>) => HTMLElement;
   children?: React.ReactElement;
 }
 
 export const ReactTyped: React.FC<ReactTypedProps> = memo(
-  ({ style, className, typedRef, stopped, children, ...typedOptions }) => {
-    const rootElement = React.useRef(null);
-
-    React.useEffect(() => {
-      const typed = new Typed(rootElement.current, { ...typedOptions });
+  ({
+    style,
+    className,
+    typedRef,
+    parseRef: transformRef,
+    stopped,
+    children,
+    ...typedOptions
+  }) => {
+    const rootElement = useRef<any>(null);
+    const shouldUpdateArgs = useMemo(
+      () => [
+        ...Object.values(typedOptions).filter(
+          (v) =>
+            typeof v === "boolean" ||
+            typeof v === "number" ||
+            typeof v === "number"
+        ),
+        typedOptions.strings?.join(","),
+      ],
+      [typedOptions]
+    );
+    useEffect(() => {
+      const element =
+        (transformRef && transformRef(rootElement)) || rootElement.current;
+      const typed = new Typed(element, { ...typedOptions });
       if (typedRef && typed) {
         typedRef(typed);
       }
@@ -180,7 +208,7 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
       return () => {
         typed.destroy();
       };
-    }, [typedOptions]);
+    }, shouldUpdateArgs);
 
     const child = !children ? (
       <span style={style} ref={rootElement} />

@@ -4,12 +4,9 @@
 
 ---
 
-
 [Installation](#installation)
 
-[Examples](http://ssbeefeater.github.io/react-typed)
-
-[Documentation](#documentation)
+[Docs & Examples](http://ssbeefeater.github.io/react-typed)
 
 ---
 
@@ -22,92 +19,68 @@ yarn add react-typed
         #or
 npm install react-typed --save
 ```
+
 ---
+
 #### Examples
 
 ```javascript
-import React,{ Component } from 'react';
-import { render } from 'react-dom';
-import Typed from 'react-typed';
+import { ReactTyped } from "react-typed";
 
-class MyComponent extends Component {
-    render() {
-        return (
-            <div>
-                <Typed
-                    strings={['Here you can find anything']}
-                    typeSpeed={40}
-                />
-                <br/>
+const MyComponent = () => (
+  <div>
+    <ReactTyped strings={["Here you can find anything"]} typeSpeed={40} />
+    <br />
 
-                <Typed
-                strings={[
-                    'Search for products',
-                    'Search for categories',
-                    'Search for brands']}
-                    typeSpeed={40}
-                    backSpeed={50}
-                    attr="placeholder"
-                    loop >
-                    <input type="text"/>
-                </Typed>
-            </div>
-        );
-    }
-}
-
-render(
-    <MyComponent/>,
-    document.getElementById('app'),
+    <ReactTyped
+      strings={[
+        "Search for products",
+        "Search for categories",
+        "Search for brands",
+      ]}
+      typeSpeed={40}
+      backSpeed={50}
+      attr="placeholder"
+      loop
+    >
+      <input type="text" />
+    </ReactTyped>
+  </div>
 );
+```
 
+```javascript
+import { ReactTyped } from "react-typed";
+import { Input } from "antd";
+
+const MyComponent = () => (
+  <ReactTyped parseRef={(ref) => ref.current.input} attr="placeholder" strings={["Add a name here"]} typeSpeed={40} >
+    <Input>
+  </ReactTyped>
+);
 ```
 
 ###### Using typed start, stop, toggle, destroy, reset functions
+
 ```javascript
-import React,{ Component } from 'react';
-import { render } from 'react-dom';
-import Typed from 'react-typed';
+import { ReactTyped,Typed } from "react-typed";
 
-class MyComponent extends Component {
-    render() {
-        return (
-                <div>
-                    <Button onClick={this.typed.start()}>Start</Button>
-                    <Button onClick={this.typed.stop()}>Stop</Button>
-                    <Button onClick={this.typed.toggle()}>Toggle</Button>
-                    <Button onClick={this.typed.destroy()}>Destroy</Button>
-                    <Button onClick={this.typed.reset()}>Reset</Button>
-                    <Typed
-                    typedRef={(typed) => { this.typed = typed; }}
-                    strings={['Here you can find anything']}
-                    typeSpeed={40}
-                    />
-                </div>
-        );
-    }
+const MyComponent  {
+  const [typed,setTyped] = React.useState<Typed| undefined>()
+
+  return (
+      <div>
+        <Button onClick={typed.start()}>Start</Button>
+        <Button onClick={typed.stop()}>Stop</Button>
+        <Button onClick={typed.toggle()}>Toggle</Button>
+        <Button onClick={typed.destroy()}>Destroy</Button>
+        <Button onClick={typed.reset()}>Reset</Button>
+        <ReactTyped
+          typedRef={setTyped}
+          strings={["Here you can find anything"]}
+          typeSpeed={40}
+        />
+      </div>
+    )
 }
-
-render(
-    <MyComponent/>,
-    document.getElementById('app'),
-);
-
 ```
-
-for blinking cursor ```import 'react-typed/dist/animatedCursor.css';```
-
-#### Documentation
-
-
-React-typed supports all official options that you can find [here](http://www.mattboldt.com/typed.js/docs/).
-But also supports some extra props:
-
-
-| propType  | required | default  | description |
-| ------------- | ------------- | ------------- | ------------- |
-| style(object) | no | - | styles for the outer element |
-| className(string) | no | - | class name for the outer element |
-| children(object) | no | - | the element to wrap |
-| typedRef(func) | no | - | typedRef(self: Typed) returns the Typed instance |
-| stopped(bool) | no | - | initialize in stopped state |

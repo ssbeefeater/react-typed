@@ -162,8 +162,14 @@ export interface ReactTypedProps {
      * @default false
      * */
     stopped?: boolean;
+    /**
+     * In some custom component dom element is not in the ref.current property.
+     * ie an Input by antd the element is in input property ( ref.current.input )
+     * you can use this function to get the element from the ref
+     * @default (ref)=>ref.current
+     * */
+    parseRef?: (ref: React.RefObject<any>) => HTMLElement;
     children?: React.ReactElement;
 }
 export declare const ReactTyped: React.FC<ReactTypedProps>;
 export { Typed };
-//# sourceMappingURL=index.d.ts.map

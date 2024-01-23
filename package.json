@@ -1,9 +1,18 @@
 {
   "name": "react-typed",
-  "version": "2.0.0",
+  "version": "2.0.8",
   "description": "A react wrapper for typed.js",
-  "main": "dist/react-typed.js",
-  "types": "./react-typed.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "start": "start-storybook -p 6006",
@@ -42,6 +51,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.69",
     "@types/react": "^18.2.47",
+    "antd": "^5.13.2",
     "eslint-plugin-storybook": "^0.6.15",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",

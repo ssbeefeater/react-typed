@@ -1,22 +1,24 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { ReactTyped as TypedReact, ReactTypedProps } from "../index";
-import Typed from "typed.js";
+import { Input } from "antd";
+import { ReactTyped as TypedReact, Typed, ReactTypedProps } from "../src/index";
 
 const ReactTyped: React.FC<ReactTypedProps> = (props) => {
   const [typedInstance, setTypedInstance] = React.useState<Typed>();
   return (
     <div>
-      <TypedReact {...props} typedRef={setTypedInstance} />
-      <div>
-        <br />
-        <button onClick={() => typedInstance?.reset()}>Reset</button>
-        <button onClick={() => typedInstance?.start()}>Start</button>
-        <button onClick={() => typedInstance?.stop()}>Stop</button>
-        <button onClick={() => typedInstance?.toggle()}>Toggle</button>
-        <button onClick={() => typedInstance?.destroy()}>Destroy</button>
-      </div>
+      <TypedReact {...props} typedRef={props.typedRef || setTypedInstance} />
+      {(!props.typedRef && (
+        <div>
+          <br />
+          <button onClick={() => typedInstance?.reset()}>Reset</button>
+          <button onClick={() => typedInstance?.start()}>Start</button>
+          <button onClick={() => typedInstance?.stop()}>Stop</button>
+          <button onClick={() => typedInstance?.toggle()}>Toggle</button>
+          <button onClick={() => typedInstance?.destroy()}>Destroy</button>
+        </div>
+      )) ||
+        null}
     </div>
   );
 };
@@ -58,7 +60,7 @@ export const BasicUsage: Story = {
   render: (props) => <ReactTyped {...props} />,
 };
 
-export const Input: Story = {
+export const WithInput: Story = {
   render: (props) => (
     <ReactTyped
       {...props}
@@ -89,8 +91,8 @@ export const Stopped: Story = {
     return (
       <div>
         <ReactTyped
-          typedRef={setTypedInstance}
           {...props}
+          typedRef={setTypedInstance}
           stopped
           strings={[
             "Search by name",
@@ -109,4 +111,18 @@ export const Stopped: Story = {
       </div>
     );
   },
+};
+
+export const CustomComponent: Story = {
+  render: (props) => (
+    <ReactTyped
+      {...props}
+      attr="placeholder"
+      loop={false}
+      strings={["Add a name here"]}
+      parseRef={(ref) => ref.current.input}
+    >
+      <Input type="text" style={{ width: 300 }} />
+    </ReactTyped>
+  ),
 };
