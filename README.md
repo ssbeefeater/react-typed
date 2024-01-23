@@ -2,6 +2,12 @@
 
 ### A react wrapper for [typed.js](https://github.com/mattboldt/typed.js)
 
+### react-typed v2 changelog
+
+- Re-wright in typescript
+- Support for react 18
+- new property parseRef for supporting custom components that handles ref differently (see last example)
+- update docs with latest storybook version
 ---
 
 [Installation](#installation)
@@ -49,17 +55,6 @@ const MyComponent = () => (
 );
 ```
 
-```javascript
-import { ReactTyped } from "react-typed";
-import { Input } from "antd";
-
-const MyComponent = () => (
-  <ReactTyped parseRef={(ref) => ref.current.input} attr="placeholder" strings={["Add a name here"]} typeSpeed={40} >
-    <Input>
-  </ReactTyped>
-);
-```
-
 ###### Using typed start, stop, toggle, destroy, reset functions
 
 ```javascript
@@ -83,4 +78,17 @@ const MyComponent  {
       </div>
     )
 }
+```
+
+#### Using parseRef for custom components
+
+```javascript
+import { ReactTyped } from "react-typed";
+import { Input } from "antd";
+
+const MyComponent = () => (
+  <ReactTyped parseRef={(ref) => ref.current.input} attr="placeholder" strings={["Add a name here"]} typeSpeed={40} >
+    <Input>
+  </ReactTyped>
+);
 ```
