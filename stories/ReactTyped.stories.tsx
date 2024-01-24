@@ -31,9 +31,9 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   args: {
     strings: [
-      'welcome to <a href="https://github.com/mattboldt/typed.js/">react-typed</a>',
+      'welcome to <a href="https://github.com/ssbeefeater/react-typed">react-typed</a>',
       'This is a react component that wraps up the <a href="https://github.com/mattboldt/typed.js/">typed.js</a>',
-      'If you like the project add a star in <a href="https://github.com/mattboldt/typed.js/">typed.js</a> and <a href="https://github.com/mattboldt/typed.js/">react-typed</a>',
+      'If you like the project add a star in <a href="https://github.com/mattboldt/typed.js/">typed.js</a> and <a href="https://github.com/ssbeefeater/react-typed">react-typed</a>',
     ],
     typeSpeed: 50,
     backSpeed: 50,
