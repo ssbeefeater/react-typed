@@ -6,6 +6,7 @@
 
 - Re-wright in typescript
 - Support for react 18
+- option to start animation only when the element is visible
 - new property parseRef for supporting custom components that handles ref differently (see last example)
 - update docs with latest storybook version
 
@@ -56,21 +57,6 @@ const MyComponent = () => (
 );
 ```
 
-###### Start only if is visible in the dom
-
-```javascript
-import { ReactTyped } from "react-typed";
-
-const MyComponent = () => (
-  <ReactTyped
-    startWhenVisible
-    strings={[
-      "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
-    ]}
-    typeSpeed={40}
-  />
-);
-```
 
 ###### Using typed start, stop, toggle, destroy, reset functions
 
@@ -95,6 +81,22 @@ const MyComponent  {
       </div>
     )
 }
+```
+
+###### Start only if is visible in the dom
+
+```javascript
+import { ReactTyped } from "react-typed";
+
+const MyComponent = () => (
+  <ReactTyped
+    startWhenVisible
+    strings={[
+      "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
+    ]}
+    typeSpeed={40}
+  />
+);
 ```
 
 #### Using parseRef for custom components
