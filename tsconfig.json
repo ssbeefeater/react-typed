@@ -1,22 +1,9 @@
 {
-  "include": ["src", "stories"],
-  "exclude": ["dist", "node_modules", "stories/**/*"],
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "module": "ESNext" /* Specify what module code is generated. */,
-    "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
-    "outDir": "dist",
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-    "strict": true /* Enable all strict type-checking options. */,
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "jsx": "react",
-    "sourceMap": true,
-    "rootDir": "./src",
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "moduleResolution": "node"
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "dist/mjs",
+    "declaration": true
   }
 }
