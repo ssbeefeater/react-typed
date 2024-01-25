@@ -1,32 +1,13 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "antd";
-import { ReactTyped as TypedReact, Typed, ReactTypedProps } from "../src/index";
-
-const ReactTyped: React.FC<ReactTypedProps> = (props) => {
-  const [typedInstance, setTypedInstance] = React.useState<Typed>();
-  return (
-    <div>
-      <TypedReact {...props} typedRef={props.typedRef || setTypedInstance} />
-      {(!props.typedRef && (
-        <div>
-          <br />
-          <button onClick={() => typedInstance?.reset()}>Reset</button>
-          <button onClick={() => typedInstance?.start()}>Start</button>
-          <button onClick={() => typedInstance?.stop()}>Stop</button>
-          <button onClick={() => typedInstance?.toggle()}>Toggle</button>
-          <button onClick={() => typedInstance?.destroy()}>Destroy</button>
-        </div>
-      )) ||
-        null}
-    </div>
-  );
-};
+import { ReactTyped } from "../src/index";
+import { Story } from "@storybook/blocks";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "React Typed",
-  component: TypedReact,
+  component: ReactTyped,
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   args: {
@@ -50,15 +31,32 @@ const meta = {
       control: false,
     },
   },
-} satisfies Meta<typeof TypedReact>;
+  decorators: [
+    (Story, { args }) => {
+      const [typedInstance, setTypedInstance] = React.useState<any>();
+      return (
+        <div>
+          {Story({ args: { typedRef: setTypedInstance, ...args } })}
+          {(
+            <div>
+              <br />
+              <button onClick={() => typedInstance?.reset()}>Reset</button>
+              <button onClick={() => typedInstance?.start()}>Start</button>
+              <button onClick={() => typedInstance?.stop()}>Stop</button>
+              <button onClick={() => typedInstance?.toggle()}>Toggle</button>
+              <button onClick={() => typedInstance?.destroy()}>Destroy</button>
+            </div>
+          ) || null}
+        </div>
+      );
+    },
+  ],
+} satisfies Meta<typeof ReactTyped>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const BasicUsage: Story = {
-  render: (props) => <ReactTyped {...props} />,
-};
+export const BasicUsage: Story = {};
 
 export const WithInput: Story = {
   render: (props) => (
@@ -84,32 +82,9 @@ export const InputPlaceholder: Story = {
   ),
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Stopped: Story = {
-  render: (props) => {
-    const [typedInstance, setTypedInstance] = React.useState<Typed>();
-    return (
-      <div>
-        <ReactTyped
-          {...props}
-          typedRef={setTypedInstance}
-          stopped
-          strings={[
-            "Search by name",
-            "Search by type",
-            "Search by description",
-          ]}
-        />
-        <div>
-          <br />
-          <button onClick={() => typedInstance?.reset()}>Reset</button>
-          <button onClick={() => typedInstance?.start()}>Start</button>
-          <button onClick={() => typedInstance?.stop()}>Stop</button>
-          <button onClick={() => typedInstance?.toggle()}>Toggle</button>
-          <button onClick={() => typedInstance?.destroy()}>Destroy</button>
-        </div>
-      </div>
-    );
+  args: {
+    stopped: true,
   },
 };
 
@@ -128,19 +103,20 @@ export const CustomComponent: Story = {
 };
 
 export const StartWhenVisible: Story = {
-  render: (props) => (
-    <>
-      Scroll Down
-      <div style={{ height: 1000 }} />
-      <TypedReact
-        {...props}
-        startWhenVisible
-        loop={false}
-        strings={[
-          "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
-        ]}
-      />
-      <div style={{ height: 300 }} />
-    </>
-  ),
+  args: {
+    startWhenVisible: true,
+    loop: false,
+    strings: [
+      "If <strong>startWhenVisible</strong> is <strong>true</strong>, will start when is visible in the dom",
+    ],
+  },
+  decorators: [
+    (Story) => (
+      <div>
+        Scroll Down
+        <div style={{ height: 1000 }} />
+        {Story()} <div style={{ height: 300 }} />
+      </div>
+    ),
+  ],
 };

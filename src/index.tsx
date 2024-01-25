@@ -1,6 +1,31 @@
 import React, { memo, useMemo, useRef, useEffect } from "react";
 import Typed from "typed.js";
 export interface ReactTypedProps {
+  stopped?: boolean;
+  /**
+   * if true will be initialized in stopped state
+   * @default false
+   * */
+  startWhenVisible?: boolean;
+  /**
+   * Styles for the created element in case children is not provided
+   * */
+  style?: React.CSSProperties;
+  /**
+   * class name for the created element in case children is not provided
+   * */
+  className?: string;
+  /**
+   * In some custom component dom element is not in the ref.current property.
+   * ie an Input by antd the element is in input property ( ref.current.input )
+   * you can use this function to get the element from the ref
+   * @default (ref)=>ref.current
+   * */
+  parseRef?: (ref: React.RefObject<any>) => HTMLElement;
+  /**
+   * Returns the typed instance
+   * */
+  typedRef?: (typed: Typed) => void;
   /**
    * strings to be typed
    * @default [
@@ -10,6 +35,7 @@ export interface ReactTypedProps {
     'Have a great day!',
   ]
    * */
+  children?: React.ReactElement;
   strings?: string[];
   /**
    * ID or instance of HTML element of element containing string children
@@ -104,7 +130,7 @@ export interface ReactTypedProps {
   /**
    * Before it begins typing the first string
    */
-  onBegin?(self: Typed): void;
+  onBegin?: (self: Typed) => number;
   /**
    * All typing is complete
    */
@@ -145,36 +171,6 @@ export interface ReactTypedProps {
    * After destroy
    */
   onDestroy?(self: Typed): void;
-  /**
-   * Styles for the outer element
-   * */
-  style?: React.CSSProperties;
-  /**
-   * class name for the outer element
-   * */
-  className?: string;
-  /**
-   * callback that returns the typed instance
-   * */
-  typedRef?: (typed: Typed) => void;
-  /**
-   * if true will be initialized in stopped state
-   * @default false
-   * */
-  stopped?: boolean;
-  /**
-   * In some custom component dom element is not in the ref.current property.
-   * ie an Input by antd the element is in input property ( ref.current.input )
-   * you can use this function to get the element from the ref
-   * @default (ref)=>ref.current
-   * */
-  parseRef?: (ref: React.RefObject<any>) => HTMLElement;
-  /**
-   * if true will start only when the element is visible
-   * @default false
-   * */
-  startWhenVisible?: boolean;
-  children?: React.ReactElement;
 }
 
 export const ReactTyped: React.FC<ReactTypedProps> = memo(
@@ -182,7 +178,7 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
     style,
     className,
     typedRef,
-    parseRef: transformRef,
+    parseRef,
     stopped,
     children,
     startWhenVisible,
@@ -203,7 +199,7 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
     );
     useEffect(() => {
       const element =
-        (transformRef && transformRef(rootElement)) || rootElement.current;
+        (parseRef && parseRef(rootElement)) || rootElement.current;
       const typed = new Typed(element, { ...typedOptions });
 
       if (stopped || startWhenVisible) {
@@ -229,17 +225,13 @@ export const ReactTyped: React.FC<ReactTypedProps> = memo(
     }, shouldUpdateArgs);
 
     const child = !children ? (
-      <span style={style} ref={rootElement} />
+      <span style={style} className={className} ref={rootElement} />
     ) : (
       React.cloneElement(children, {
         ref: rootElement,
       })
     );
-    return (
-      <span style={style} className={className} data-testid="react-typed">
-        {child}
-      </span>
-    );
+    return child;
   }
 );
 
