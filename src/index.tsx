@@ -1,9 +1,13 @@
 import React, { memo, useMemo, useRef, useEffect } from "react";
 import Typed from "typed.js";
 export interface ReactTypedProps {
-  stopped?: boolean;
   /**
    * if true will be initialized in stopped state
+   * @default false
+   * */
+  stopped?: boolean;
+  /**
+   * if true the animation will start when the element is visible
    * @default false
    * */
   startWhenVisible?: boolean;
@@ -27,6 +31,10 @@ export interface ReactTypedProps {
    * */
   typedRef?: (typed: Typed) => void;
   /**
+   * Add typed strings directly in the component
+   * */
+  children?: React.ReactElement;
+  /**
    * strings to be typed
    * @default [
     'These are the default values...',
@@ -35,7 +43,6 @@ export interface ReactTypedProps {
     'Have a great day!',
   ]
    * */
-  children?: React.ReactElement;
   strings?: string[];
   /**
    * ID or instance of HTML element of element containing string children
