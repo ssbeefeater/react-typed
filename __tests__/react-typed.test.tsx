@@ -3,30 +3,24 @@ import { render, screen } from "@testing-library/react";
 import { ReactTyped } from "../src";
 
 describe("<Typed />", () => {
-  it("Renders correct", () => {
-    render(
-      <ReactTyped strings={["Here you can find anything"]} typeSpeed={40} />
-    );
-    expect(screen.getByTestId("react-typed")).toBeTruthy();
+  it("Renders correct", async () => {
+    const textToType = "Here you can find anything";
+    render(<ReactTyped strings={[textToType]} />);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(screen.getByText(textToType)).toBeTruthy();
   });
-  it("Renders correct with children", () => {
+  it("Renders correct with children", async () => {
+    const textToType = "Search for products";
     render(
-      <ReactTyped
-        strings={[
-          "Search for products",
-          "Search for categories",
-          "Search for brands",
-        ]}
-        typeSpeed={40}
-        backSpeed={50}
-        attr="placeholder"
-        loop
-      >
+      <ReactTyped strings={[textToType]} attr="placeholder" loop>
         <input data-testid="typed-input" type="text" />
       </ReactTyped>
     );
-    expect(screen.getByTestId("react-typed")).toBeTruthy();
-    expect(screen.getByTestId("typed-input")).toBeTruthy();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(
+      screen.getByTestId("typed-input").getAttribute("placeholder")
+    ).toEqual(textToType);
   });
   it("Expect to update if props were change", () => {
     const typedInstance = jest.fn();
