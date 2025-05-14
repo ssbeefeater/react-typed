@@ -4,7 +4,7 @@
 
 ### react-typed v2 changelog
 
-- Re-wright in typescript
+- Rewrite in typescript
 - Support for react 18
 - option to start animation only when the element is visible
 - new property parseRef for supporting custom components that handles ref differently (see last example)
